@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "stock-notifier"
+version = "0.1.0"
+description = ""
+authors = ["Atharva Sonawane <Atharva Sonawane>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+websocket-client = "^1.6.4"
+python-telegram-bot = "^20.7"
+python-dotenv = "^1.0.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
