@@ -33,9 +33,10 @@ def on_message(ws, message):
                         asyncio.run(
                             TG_APP.bot.send_message(
                                 chat_id=sub[0],
+                                parse_mode="MarkdownV2",
                                 text=f"""
-📢 Price Alert!
-**{trade.symbol}** is now at **{trade.last_price}**! ()
+📢 Price Alert\\!
+**{trade.symbol}** is now at **{trade.last_price}**\\! ()
 """,
                             )
                         )
@@ -56,8 +57,9 @@ def start_websocket():
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE):
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
+        parse_mode="MarkdownV2",
         text="""
-📈 Welcome to Stock Notifier Bot! 🔔
+📈 Welcome to Stock Notifier Bot\\! 🔔
 
 To subscribe to a stock, use the following format:
 `/subscribe {stock-symbol} {trigger-price}`
@@ -73,6 +75,7 @@ async def subscribe(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if len(split) != 3:
         await context.bot.send_message(
             chat_id=update.effective_chat.id,
+            parse_mode="MarkdownV2",
             text="""
 ‼️ Error: invalid format. 
 
@@ -95,8 +98,10 @@ For example:
         SUBSCRIPTIONS[symbol].append((update.effective_chat.id, trigger))
     await context.bot.send_message(
         chat_id=update.effective_chat.id,
+        parse_mode="MarkdownV2",
         text=f"""
-✅ Subscription successful!
+✅ Subscription successful\\!
+
 You will be notified when **{symbol}** hits **{trigger}** or heigher.
 """,
     )
